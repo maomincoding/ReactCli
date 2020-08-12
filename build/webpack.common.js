@@ -7,13 +7,15 @@ module.exports = {
         main: path.resolve(__dirname, "../src/index.js")
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.less', "scss"],
+        extensions: ['.js', '.jsx', '.less', ".scss"],
         modules: ['node_modules']
     },
     module: {
         rules: [
             {
                 test: /\.(jpg|png|gif)$/, // 可以多加几个格式的文件
+                exclude: path.resolve(__dirname, "node_modules"),
+                include: path.resolve(__dirname, "src"),
                 use: {
                     loader: 'url-loader', // file-loader/url-loader
                     options: {
@@ -24,7 +26,8 @@ module.exports = {
                     }
                 }
             },
-            { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: "babel-loader" },
+            {
+                test: /\.(js|jsx)$/, exclude: [path.resolve(__dirname, 'node_modules')], loader: "babel-loader" },
             {
                 test: /\.scss$/,
                 use: ["style-loader", {
@@ -64,6 +67,7 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
+        // publicPath: '/site/test',
         path: path.resolve(__dirname, '../dist')
     }
 }
