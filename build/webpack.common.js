@@ -3,7 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        main: path.resolve(__dirname, "../src/index.js")
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.less', "scss"],
+        modules: ['node_modules']
+    },
     module: {
         rules: [
             {
@@ -34,10 +40,30 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({ title:"ReactCli",template: './public/index.html',favicon:"./public/favicon.ico" }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin({
+            root: path.resolve(__dirname, '../')
+        })
     ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: true,
+                    chunks: 'all',
+                    automaticNameDelimiter: '~',
+                    maxInitialRequests: 3,
+                    maxAsyncRequests: 5,
+                    priority: -10
+                },
+                runtimeChunk: {
+                    name: 'main'
+                }
+            }
+        }
+    },
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        filename: '[name].js',
+        path: path.resolve(__dirname, '../dist')
     }
 }
