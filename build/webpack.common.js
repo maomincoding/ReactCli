@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: {
@@ -21,16 +22,19 @@ module.exports = {
                     options: {
                         // placeholders 占位符
                         name: '[name].[ext]', // 这样就还会保持原来的文件名
-                        outputPath: 'images/', // 图片打包输出的路径
+                        outputPath: 'imgs/', // 图片打包输出的路径
                         limit: 2048 // 限制文件大小(如果图片文件大于该值会打包出图片文件)
                     }
                 }
             },
             {
-                test: /\.(js|jsx)$/, exclude: [path.resolve(__dirname, 'node_modules')], loader: "babel-loader" },
+                test: /\.(js|jsx)$/, 
+                exclude: [path.resolve(__dirname, 'node_modules')], 
+                loader: 'babel-loader'
+            },
             {
                 test: /\.scss$/,
-                use: ["style-loader", {
+                use: ["style-loader", MiniCssExtractPlugin.loader, {
                     loader: "css-loader",
                     // 不管你是在js中直接引入css,还是在css中再引入css文件。加上下面的importLoaders，都会走sass-loader和postcss-loader。
                     options: {
@@ -45,6 +49,9 @@ module.exports = {
         new HtmlWebpackPlugin({ title:"ReactCli",template: './public/index.html',favicon:"./public/favicon.ico" }),
         new CleanWebpackPlugin({
             root: path.resolve(__dirname, '../')
+        }),
+        new MiniCssExtractPlugin({
+            filename: "./css/[name]-buddle.css"
         })
     ],
     optimization: {
@@ -66,7 +73,7 @@ module.exports = {
         }
     },
     output: {
-        filename: '[name].js',
+        filename: 'js/[name].[hash:8].js',
         // publicPath: '/site/test',
         path: path.resolve(__dirname, '../dist')
     }
