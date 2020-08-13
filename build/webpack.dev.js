@@ -7,14 +7,14 @@ const devConfig = {
   devtool:'cheap-module-eval-source-map',
   devServer: {
     contentBase: './dist',
-    open: false,
+    open: true,
     host: "localhost",
     port: 3500, 
     proxy: {
       '/api': "http://localhost:3000/"
     },
-    hot: true,
-    hotOnly: true
+    hot: true
+    // hotOnly: true
   },
   resolve:{
     extensions:['.js','.jsx','.json']

@@ -33,13 +33,6 @@ module.exports = {
                 exclude: [path.resolve(__dirname, 'node_modules')], 
                 loader: 'babel-loader'
             },
-            // {
-            //     loader: ,
-            //     options: {
-            //       //开发环境配置热更新
-            //       hmr: process.env.NODE_ENV === 'development',
-            //     },
-            //   }
             {
                 test: /\.scss$/,
                 use: [ MiniCssExtractPlugin.loader,{
