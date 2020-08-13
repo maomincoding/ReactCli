@@ -16,8 +16,8 @@ module.exports = {
         rules: [
             {
                 test: /\.(jpg|png|gif)$/, // 可以多加几个格式的文件
-                exclude: path.resolve(__dirname, "node_modules"),
-                include: path.resolve(__dirname, "src"),
+                exclude: path.resolve(__dirname, "../node_modules"),
+                include: path.resolve(__dirname, "../src"),
                 use: {
                     loader: 'url-loader', // file-loader/url-loader
                     options: {
