@@ -9,15 +9,12 @@ const devConfig = {
     contentBase: './dist',
     open: true,
     host: "localhost",
-    port: 3500, 
+    port: 5000, 
     proxy: {
       '/api': "http://localhost:3000/"
     },
-    hot: true
-    // hotOnly: true
-  },
-  resolve:{
-    extensions:['.js','.jsx','.json']
+    hot: true,
+    hotOnly: true
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()

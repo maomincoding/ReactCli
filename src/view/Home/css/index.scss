@@ -1,6 +1,35 @@
-.home{
+.container{
+  width: 600px;
+  margin: 0 auto;
+  .home{
   color: #333;
   text-align: center;
   font-size: 30px;
   margin: 200px 0 10px 0;
+}
+.logo{
+  text-align: center;
+  img{
+    width: 500px;
+    object-fit: fill;
+  }
+}
+.link{
+  font-size: 20px;
+  text-align: center;
+  a{
+      margin: 0 10px;
+      color: #61DBFB;
+      text-decoration: underline;
+  }
+
+}
+.tip{
+  margin: 20px 0;
+  .tips{
+  text-align: center;
+  line-height: 32px;
+  }
+}
+
 }

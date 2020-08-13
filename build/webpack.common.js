@@ -9,7 +9,7 @@ module.exports = {
         main: path.resolve(__dirname, "../src/index.js")
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.less', ".scss"],
+        extensions: ['.js', '.jsx', '.less', ".scss", ".css"],
         modules: ['node_modules']
     },
     module: {
@@ -29,13 +29,17 @@ module.exports = {
                 }
             },
             {
-                test: /\.(js|jsx)$/, 
-                exclude: [path.resolve(__dirname, 'node_modules')], 
+                test: /\.(js|jsx)$/,
+                exclude: [path.resolve(__dirname, 'node_modules')],
                 loader: 'babel-loader'
             },
             {
+                test: /\.css$/,
+                use: ["style-loader","css-loader"]
+            },
+            {
                 test: /\.scss$/,
-                use: [ MiniCssExtractPlugin.loader,{
+                use: [MiniCssExtractPlugin.loader, {
                     loader: "css-loader",
                     // 不管你是在js中直接引入css,还是在css中再引入css文件。加上下面的importLoaders，都会走sass-loader和postcss-loader。
                     options: {
@@ -47,7 +51,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({ title:"ReactCli",template: './public/index.html',favicon:"./public/favicon.ico" }),
+        new HtmlWebpackPlugin({ title: "ReactCli", template: './public/index.html', favicon: "./public/favicon.ico" }),
         new CleanWebpackPlugin({
             root: path.resolve(__dirname, '../')
         }),
