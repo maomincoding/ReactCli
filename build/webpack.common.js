@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const devMode = process.env.NODE_ENV != 'production'
 
 module.exports = {
     entry: {
@@ -32,9 +33,16 @@ module.exports = {
                 exclude: [path.resolve(__dirname, 'node_modules')], 
                 loader: 'babel-loader'
             },
+            // {
+            //     loader: ,
+            //     options: {
+            //       //开发环境配置热更新
+            //       hmr: process.env.NODE_ENV === 'development',
+            //     },
+            //   }
             {
                 test: /\.scss$/,
-                use: ["style-loader", MiniCssExtractPlugin.loader, {
+                use: [ MiniCssExtractPlugin.loader,{
                     loader: "css-loader",
                     // 不管你是在js中直接引入css,还是在css中再引入css文件。加上下面的importLoaders，都会走sass-loader和postcss-loader。
                     options: {
