@@ -3,7 +3,11 @@
         [
         "@babel/preset-env",
         {
-        "targets": "> 0.25%, not dead",
+        "targets": {
+            "browsers": [
+                "chrome >= 50"
+            ]
+        }, //指定浏览器版本号
         "useBuiltIns":"usage"
         }
         ],

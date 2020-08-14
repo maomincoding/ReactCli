@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import 'antd/dist/antd.css';
 import { Button } from 'antd';
 
 class About extends Component {
@@ -7,7 +6,7 @@ class About extends Component {
       return (
           <div>
           这是About页
-          <Button>333</Button>
+          <Button>kkk</Button>
           </div>
       )
   }
