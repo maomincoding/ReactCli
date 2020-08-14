@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { Link } from 'react-router-dom';
 import styled from './css/index';
-
+import logo from "../../assets/images/logo.jpg";
 
 class Home extends Component {
   render(){
@@ -11,7 +11,7 @@ class Home extends Component {
                 Hello ReactCli
               </div>
               <div className={styled.logo}>
-               
+                  <img src={logo} alt="" />
               </div>
               <div className={styled.link}>
                 <Link to={"/about/"}>About</Link>

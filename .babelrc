@@ -3,10 +3,11 @@
         [
         "@babel/preset-env",
         {
-        "targets": {"chrome":"67"}, //指定浏览器版本号
+        "targets": "> 0.25%, not dead",
         "useBuiltIns":"usage"
         }
         ],
         "@babel/preset-react"
-    ]
+    ],
+     "plugins": ["@babel/plugin-syntax-dynamic-import"]
 }

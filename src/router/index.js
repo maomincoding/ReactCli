@@ -3,10 +3,12 @@ import React from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 // import { Provider } from 'react-redux';
 // import store from '../store/index';
+import asyncComponent from '../utils/asyncComponent'
 
-import Home from '../view/Home/index.jsx';
-import About from '../view/About/index';
-import More from '../view/More/index';
+const Home = asyncComponent(() => import('../view/Home/index.jsx'))
+const About = asyncComponent(() => import('../view/About/index'))
+const More = asyncComponent(() => import('../view/More/index'))
+
 
 const APPRouter = () =>(
         <div>

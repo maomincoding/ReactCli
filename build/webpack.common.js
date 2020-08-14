@@ -39,7 +39,8 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: [MiniCssExtractPlugin.loader, {
+                // MiniCssExtractPlugin.loader
+                use: [devMode ? "style-loader" : MiniCssExtractPlugin.loader, {
                     loader: "css-loader",
                     // 不管你是在js中直接引入css,还是在css中再引入css文件。加上下面的importLoaders，都会走sass-loader和postcss-loader。
                     options: {
