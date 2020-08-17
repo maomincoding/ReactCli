@@ -71,9 +71,6 @@ module.exports = {
                     maxInitialRequests: 3,
                     maxAsyncRequests: 5,
                     priority: -10
-                },
-                runtimeChunk: {
-                    name: 'main'
                 }
             }
         }
