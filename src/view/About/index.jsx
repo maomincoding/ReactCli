@@ -1,14 +1,20 @@
 import React,{Component} from 'react';
-import { Button } from 'antd';
+import Navbar from '../../component/navbar'
+import styled from './css/index'
 
 class About extends Component {
   render(){
       return (
           <div>
-          这是About页
-          <Button>kkk</Button>
+          <Navbar></Navbar>
+            <div className={styled.aboutTit}>
+              This is the about page
+            </div>
           </div>
       )
+  }
+  componentDidMount(){
+    document.title = 'About';
   }
 }
 

@@ -5,7 +5,7 @@ import { Spin } from 'antd';
 
 const loadingComponent = () => {
     return (
-        <div> <Spin size="large" /></div>
+        <div style={{ textAlign: 'center',margin: '50vh 0'}}><Spin size="large" /></div>
     )
 };
 
