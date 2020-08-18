@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Menu } from 'antd';
 
 class Navbar extends Component {
-    constructor(props){
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-        this.state = {
-            current: '/',
-        }
+    state = {
+        current: '/',
     }
-    handleClick(e){
+    handleClick = e => {
         this.setState({ current: e.key });
     }
     render() {
@@ -30,6 +26,12 @@ class Navbar extends Component {
             </div>
         )
     }
+    UNSAFE_componentWillMount(){
+        console.log(this.props.location.pathname);   
+        this.setState({
+            current: this.props.location.pathname,
+        });
+    }
 }
 
-export default Navbar
+export default withRouter(Navbar)

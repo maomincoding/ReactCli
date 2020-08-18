@@ -13,16 +13,15 @@ class Home extends Component {
               <div className={styled.logo}>
                   <img src={logo} alt="" />
               </div>
-              <div className={styled.link}>
-                <Link to={"/about/"}>About</Link>
-                <Link to={"/more/"}>More</Link>
-              </div>
               <div className={styled.tip}>
                 <p className={styled.tips}>This is a plug and play react scaffold.</p>
                 <p className={styled.tips}>You can use it to build projects very quickly.</p>
               </div>
           </div>
       )
+  }
+  componentDidMount() {
+    document.title = 'ReactCli';
   }
 }
 
