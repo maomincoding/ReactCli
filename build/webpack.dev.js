@@ -15,8 +15,17 @@ const devConfig = merge(commonConifg,{
     historyApiFallback:true,
     host: "localhost",
     port: process.env.PORT,
+    https: false, 
     proxy: {
-      '/api': "http://localhost:3000/"
+      '/api': {
+        target: "http://localhost:5000",
+        changeOrigin: true,
+        // ws: true,//websocket支持
+        secure: false,
+        pathRewrite: {
+          "^/api": "/"
+        }
+      }
     },
     hot: true,
     hotOnly: true
