@@ -1,6 +1,7 @@
 const webpack = require("webpack");
+const path = require('path')
 const {merge} = require("webpack-merge");
-const commonConifg = require("./webpack.common")
+const commonConifg = require("./webpack.common");
 const portfinder = require('portfinder');
 
 // 端口号
@@ -10,23 +11,25 @@ const devConfig = merge(commonConifg,{
   mode:'development', // development模式
   devtool:'cheap-module-eval-source-map',
   devServer: {
-    contentBase: './dist',
+    contentBase: path.join(__dirname, 'public'),
+    compress:true,
     open: true,
+    progress: true,
     historyApiFallback:true,
     host: "localhost",
     port: process.env.PORT,
     https: false, 
-    proxy: {
-      '/api': {
-        target: "http://localhost:5000",
-        changeOrigin: true,
-        // ws: true,//websocket支持
-        secure: false,
-        pathRewrite: {
-          "^/api": "/"
-        }
-      }
-    },
+    // proxy: {
+    //   '/api': {
+    //     target: "http://localhost:5000",
+    //     changeOrigin: true,
+    //     // ws: true,//websocket支持
+    //     secure: false,
+    //     pathRewrite: {
+    //       "^/api": "/"
+    //     }
+    //   }
+    // },
     hot: true,
     hotOnly: true
   },

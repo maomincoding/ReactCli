@@ -3,9 +3,10 @@ import { fromJS } from 'immutable';
 let i = 0;
 
 let defaultState = fromJS({
-    name: '列表',
+    name: 'ReactCli',
     list: [],
-    datalist: []
+    datalist: [],
+    flag:false
 });
 
 export default (state = defaultState, action) => {
