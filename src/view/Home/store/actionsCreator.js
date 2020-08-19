@@ -24,7 +24,7 @@ const dataList = (data) => {
 export const getList = () => {
     return (dispatch) => {
         homeData().then((res) => {
-            const data = res.data;
+            const data = res;
             const action = dataList(data);
             dispatch(action);
         }).catch((err) => {

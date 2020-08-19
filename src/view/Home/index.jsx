@@ -30,11 +30,11 @@ const mapDispatchToProps = (dispatch) => {
 
 const Home =(props)=>{
 const { name, list, datalist, handerClick, clickAnimation, flag, getdata } = props;
-// const newList = datalist.toJS();
+const newList = datalist.toJS();
   useEffect(() => {
     document.title = 'ReactCli';
     getdata();
-  }, [getdata])
+  }, [getdata, document.title])
   return (
       <div className={styled.container}>
           <div className={styled.home}>
@@ -47,17 +47,15 @@ const { name, list, datalist, handerClick, clickAnimation, flag, getdata } = pro
             <p className={styled.tips}>This is a plug and play react scaffold.</p>
             <p className={styled.tips}>You can use it to build projects very quickly.</p>
           </div>
-      {/* <List
-        header={<div>Header</div>}
-        footer={<div>Footer</div>}
+      <List
         bordered
         dataSource={newList}
         renderItem={item => (
           <List.Item>
-            <Link to={"/about/" + item.id}>{item.txt}</Link>
+            {item.username}
           </List.Item>
         )}
-      /> */}
+      />
       </div>
   )
 }

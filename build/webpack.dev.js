@@ -1,5 +1,6 @@
 const webpack = require("webpack");
-const path = require('path')
+const path = require('path');
+const apiMocker = require('mocker-api');
 const {merge} = require("webpack-merge");
 const commonConifg = require("./webpack.common");
 const portfinder = require('portfinder');
@@ -11,14 +12,18 @@ const devConfig = merge(commonConifg,{
   mode:'development', // development模式
   devtool:'cheap-module-eval-source-map',
   devServer: {
-    contentBase: path.join(__dirname, 'public'),
+    contentBase: path.resolve(__dirname, '../dist'),
+    publicPath: '/',
     compress:true,
     open: true,
     progress: true,
     historyApiFallback:true,
     host: "localhost",
     port: process.env.PORT,
-    https: false, 
+    https: false,
+    before(app) {
+      apiMocker(app, path.resolve('./mock/mocker.js'))
+    }, 
     // proxy: {
     //   '/api': {
     //     target: "http://localhost:5000",
