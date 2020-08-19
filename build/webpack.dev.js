@@ -14,6 +14,8 @@ const devConfig = merge(commonConifg,{
   devServer: {
     contentBase: path.resolve(__dirname, '../dist'),
     publicPath: '/',
+    hot: true,
+    hotOnly: true,
     compress:true,
     open: true,
     progress: true,
@@ -34,9 +36,7 @@ const devConfig = merge(commonConifg,{
     //       "^/api": "/"
     //     }
     //   }
-    // },
-    hot: true,
-    hotOnly: true
+    // }
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
