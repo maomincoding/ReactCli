@@ -18,38 +18,38 @@ npm run build
 ```
 ## Document implication
 
-### 1、build
+### build
 Webpack configuration item.
-### 2、mock
+### mock
 Analog data.
-### 3、public
+### public
 Template file.
-### 4、.babelrc
+### .babelrc
 Babel configuration.
-### 5、.gitignore
+### .gitignore
 There is no need to add NPM packages.
-### 6、postcss.config.js
+### postcss.config.js
 Postcss configuration file.
-### 7、src
+### src
 Project home folder.
 
 ## SRC folder main file
 
-### 1、assets
+### assets
 Static folder.
-### 2、component
+### component
 Place to store components.
-### 3、request
+### request
 HTTP request configuration.
-### 4、router
+### router
 Routing configuration.
-### 5、store
+### store
 State management.
-### 6、utils
+### utils
 Tool library.
-### 7、view
+### view
 Where the page is stored.
-### 8、App.jsx
+### App.jsx
 Project template.
-### 9、index.js
+### index.js
 Project entry document.
